@@ -1,0 +1,43 @@
+{*****************************************************************************}
+{*                 Affiche les messages d'erreure                            *}
+{*                                                                           *}
+{* Variables                                                                 *}
+{*    $URL_BASE : URL de la racine du site                                   *}
+{*    $DIR_BASE : Chemin de la racine du site                                *}
+{*    $charset                                                               *}
+{*    $url_redir : URL de redirection                                        *}
+{*    $message : message d'erreure                                           *}
+{*****************************************************************************}
+
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset={$charset}' />
+    {if isset($url_redir)}
+        <meta http-equiv='refresh' content='5; url={$url_redir}' />
+    {/if}
+    <title>Erreur</title>
+    <link rel='stylesheet' type='text/css' 
+    href='{$URL_BASE}css/walkyrie/niftyCorners.css' />
+    
+    <link rel='stylesheet' type='text/css' 
+    href='{$URL_BASE}css/walkyrie/style.css' />
+    
+    <script type='text/javascript' src='{$URL_BASE}js/nifty.js'></script>
+</head>
+
+<body>
+<div class='box-containeur-size'>
+    {*include file=$DIR_BASE|cat:'templates/walkyrie/box-top.htpl' 
+    soustitre='ERREUR' box_type='CADRE_PAGE'*}
+    <p>{$message}</p>
+    {if isset($url_redir) }
+        <p><a href='{$url_redir}'>
+        Vous serez redirig&eacute; dans 5 secondes</a></p>
+    {/if}
+    {*include file=$DIR_BASE|cat:'templates/walkyrie/box-bottom.htpl' 
+     box_type='CADRE_PAGE'*}
+</div>
+</body>
+</html>

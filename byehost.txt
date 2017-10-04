@@ -1,0 +1,15 @@
+Main Hosting Details
+	Control panel username:		b7_11708674
+	Control panel password: 	theplague
+	Control panel URL:			http://cpanel.byethost7.com
+
+	MySQL username:				b7_11708674
+	MySQL password:				theplague
+	MySQL hostname:				sql313.byethost7.com
+	
+	FTP username:				b7_11708674
+	FTP password:				theplague
+	FTP host name:				ftp.byethost7.com
+
+	
+	Your Website URL's Home page: http://janus.byethost7.com

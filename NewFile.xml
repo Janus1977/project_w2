@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2012, v.4002 --><!DOCTYPE description SYSTEM "description-auth.dtd">
+<description code="00021267.0004001" OP01:AC_Program="SA"
+	OP01:Product="WB" OP01:Current_Id="951" OP01:Current_Code="042"
+	xmlns:OP01="http://www.AirbusOpsData.com">
+	<title>Compartment 3</title>
+	<descbody code="00021267.0004001.002" linkTargetID="SA.00021267.0004001.002"
+		xmlns:OP01="http://www.AirbusOpsData.com">
+		<graphref inlinejustification="center" linkTargetID="SA.00021267.0004001.999"
+			mode="inline">
+			<interactive-graphic linkTargetID="SA.00021267.0004001.999">
+				<illustration code="00021267.0004001.001" in-progress="false"
+					isl-id="N_WB_00021267_0004001_001" isl-revision="00"
+					xmlns:OP01="http://www.AirbusOpsData.com">
+					<title>A321 CLS</title>
+					<hatref href="n_wb_00021267_0004001_001_00.hat" />
+					<sheet formatname="FAR2C3" grobject-id="" height="98" icn=""
+						id="SA.00021267.0004001.001" isl-sheet-number="01"
+						isl-sheet-revision="00" layer-criterion="" layer1="true" layer2="true"
+						layer3="true" unit="mm" width="163">
+						<fileref href="n_wb_00021267_0004001_001_01_00.cgm" />
+						<gcompanionref href="n_wb_00021267_0004001_001_01_00.cmp" />
+					</sheet>
+				</illustration>
+			</interactive-graphic>
+		</graphref>
+
+		<para code="00021267.0004001.042" linkTargetID="SA.00021267.0004001.931"
+			xmlns:OP01="http://www.AirbusOpsData.com">
+			For a description of the latch codes,
+			<duref>product="WBM" ref="00015642"</duref>
+			.
+		</para>
+		<table code="00021267.0004001.027" linkTargetID="SA.00021267.0004001.389"
+			tablewidth="100" xmlns:OP01="http://www.AirbusOpsData.com">
+			<wbd hidden="no">
+				<wbd-data data="Table Name" id="TABLIM"
+					value="Cargo equipment malfunction limitations" />
+				<wbd-data data="Deck" id="CARGLIMDECK" value="Lower" />
+				<wbd-data data="Position" id="CARGLIMPOS" value="FWD" />
+				<wbd-data data="Cargo compartment" id="MALCPT" value="1" />
+				<wbd-data data="Configuration" id="CARGCONF" value="60.4 x 61.5 in" />
+			</wbd>
+			<tgroup cols="7">
+				<colspec colname="col1" colwidth="0.7*">
+					<wbd hidden="no">
+						<wbd-data data="Latch Drawing" id="LATCHMALDRW" />
+					</wbd>
+				</colspec>
+				<colspec colname="col2" colwidth="0.7*">
+					<wbd hidden="no">
+						<wbd-data data="ULD Position" id="ULDMALPOS" />
+					</wbd>
+				</colspec>
+				<colspec colname="col3" colwidth="1.4*">
+					<wbd hidden="no">
+						<wbd-data data="Latch Name" id="LATCHMALNAME" />
+					</wbd>
+				</colspec>
+				<colspec colname="col4" colwidth="1.05*">
+					<wbd hidden="no">
+						<wbd-data data="Number of latch failure" id="LATCHFAILNUM" />
+					</wbd>
+				</colspec>
+				<colspec colname="col5" colwidth="1.75*" />
+				<colspec colname="col6" colwidth="0.7*">
+					<wbd hidden="no">
+						<wbd-data data="ULD weight restriction" id="ULDMALREST" />
+					</wbd>
+				</colspec>
+				<colspec colname="col7" colwidth="0.7*" />
+				<thead>
+					<row linkTargetID="SA.00021267.0004001.836">
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.473">Latch Type</paratext>
+						</entry>
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.475">
+								Applicable
+								<abb>ULD</abb>
+								Position
+							</paratext>
+						</entry>
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.477">Latch Code</paratext>
+						</entry>
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.479">
+								Failed Latch(es) per
+								<abb>ULD</abb>
+								Position
+							</paratext>
+						</entry>
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.481">Required Conditions</paratext>
+						</entry>
+						<entry align="center" nameend="col7" namest="col6" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.483">
+								<abb>ULD</abb>
+								Weight Reduced to
+							</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.837">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.485">(kg)</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.487">(lb)</paratext>
+						</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="5" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">XZ-Double Latch</paratext>
+						</entry>
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">31P, 32P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-5007-XZ
+								LD-A-RH-3007-XZ
+								LD-A-LH-1007-XZ
+								LD-A-LH-3007-XZ
+								LD-A-LH-5007-XZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The latches LD-A-RH-3007-XZ and
+								LD-A-LH-3007-XZ must remain undamaged.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">32P, 33P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-5014-XZ
+								LD-A-RH-3014-XZ
+								LD-A-LH-1014-XZ
+								LD-A-LH-$3014-XZ
+								LD-A-LH-5014-XZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The latches LD-A-RH-3014-XZ and
+								LD-A-LH-3014-XZ must remain undamaged.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">33P, 41P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-5020-XZ
+								LD-A-RH-3020-XZ
+								LD-A-LH-1020-XZ
+								LD-A-LH-3020-XZ
+								LD-A-LH-5020-XZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The latches LD-A-RH-3020-XZ and
+								LD-A-LH-3020-XZ must remain undamaged.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="15" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">YZ-Latch</paratext>
+						</entry>
+						<entry align="center" morerows="4" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">31P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6002-YZ
+								LD-A-LH-6002-YZ
+								LD-A-RH-6006-YZ
+								LD-A-LH-6006-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="3">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6003-YZ
+								LD-A-LH-6003-YZ
+								LD-A-RH-6004-YZ
+								LD-A-LH-6004-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">There is one failed latch on each
+								side of the ULD position.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"> The failed latches are on the
+								same side of the ULD position.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 or 4 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="5" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">32P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6008-YZ
+								LD-A-LH-6008-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No reduction</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No reduction</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6009-YZ
+								LD-A-LH-6009-YZ
+								LD-A-LH-6013-YZ
+								LD-A-RH-6013-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="3">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6010-YZ
+								LD-A-LH-6010-YZ
+								LD-A-RH-6012-YZ
+								LD-A-LH-6012-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">There is one failed latch on each
+								side of the ULD position.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"> The failed latches are on the
+								same side of the ULD position.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 or 4 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="4" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">33P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6015-YZ
+								LD-A-LH-6015-YZ
+								LD-A-RH-6019-YZ
+								LD-A-LH-6019-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="3">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6017-YZ
+								LD-A-LH-6017-YZ
+								LD-A-RH-6018-YZ
+								LD-A-LH-6018-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">There is one failed latch on each
+								side of the ULD position.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"> The failed latches are on the
+								same side of the ULD position.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 or 4 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="2" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">XZ-Latch (End Stop)</paratext>
+						</entry>
+						<entry align="center" morerows="2" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">31P</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="2">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-5001-XZ
+								LD-A-RH-3001-XZ
+								LD-A-RH-1001-XZ
+								LD-A-LH-1001-XZ
+								LD-A-LH-3001-XZ
+								LD-A-LH-5001-XZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The latches LD-A-RH-3001-XZ and
+								LD-A-LH-3001-XZ must remain undamaged.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No reduction</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No reduction</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The failed latches must not be
+								adjacent latches.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">2000</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">4409</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">TO SPLIT</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">TO SPLIT</paratext>
+						</entry>
+
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.493">TO SPLIT</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">TO SPLIT</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">TO SPLIT</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">TO SPLIT</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">TO SPLIT</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="2" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">XZ-Double Latch</paratext>
+						</entry>
+						<entry align="center" morerows="2" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">
+								<abb>LDCRC</abb>
+							</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="2">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-5007-XZ
+								LD-A-RH-3007-XZ
+								LD-A-LH-1007-XZ
+								LD-A-LH-3007-XZ
+								LD-A-LH-5007-XZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No reduction</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No reduction</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The failed latches must not be
+								adjacent latches.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">
+								<abb>LDCRC</abb>
+								removed
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">
+								<abb>LDCRC</abb>
+								removed
+							</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="3" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">YZ-Latch</paratext>
+						</entry>
+						<entry align="center" morerows="3" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">
+								<abb>LDCRC</abb>
+							</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="3">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-6002-YZ
+								LD-A-LH-6002-YZ
+								LD-A-RH-6003-YZ
+								LD-A-LH-6003-YZ
+								LD-A-RH-6004-YZ
+								LD-A-LH-6004-YZ
+								LD-A-RH-6006-YZ
+								LD-A-LH-6006-YZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 latch</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle" morerows="1">
+							<paratext linkTargetID="SA.00021267.0004001.195">2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">
+								There is one failed latch on each side of the
+								<abb>LDCRC</abb>
+								position.
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">
+								The failed latches are on the same side of the
+								<abb>LDCRC</abb>
+								position.
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">
+								<abb>LDCRC</abb>
+								removed
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">
+								<abb>LDCRC</abb>
+								removed
+							</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="SI and derived"
+								unit="kg">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Weight" show-unit="false" system="US"
+								unit="lb">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" morerows="2" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">XZ-Latch (End Stop)</paratext>
+						</entry>
+						<entry align="center" morerows="2" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.491">
+								<abb>LDCRC</abb>
+							</paratext>
+						</entry>
+
+						<entry align="center" valign="middle" morerows="2">
+							<paratext linkTargetID="SA.00021267.0004001.493">LD-A-RH-5001-XZ
+								LD-A-RH-3001-XZ
+								LD-A-RH-1001-XZ
+								LD-A-LH-1001-XZ
+								LD-A-LH-3001-XZ
+								LD-A-LH-5001-XZ</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">1 or 2 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The failed latches must not be
+								adjacent latches.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">@COL5@</paratext>
+						</entry>
+						No reduction
+					</paratext>
+					</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">@COL5@</paratext>
+						</entry>
+						No reduction
+					</paratext>
+					</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">3 latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">The failed latches must not be
+								adjacent latches.</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">No crewmember</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.024">
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195">4 or more latches</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.195"></paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">
+								<abb>LDCRC</abb>
+								removed
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.199">
+								<abb>LDCRC</abb>
+								removed
+							</paratext>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.058">
+						<entry align="center" morerows="1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.054">ALL</paratext>
+						</entry>
+						<entry nameend="col5" namest="col2">
+							<paratext linkTargetID="SA.00021267.0004001.056">
+								For one latch type and one applicable
+								<abb>ULD</abb>
+								position, the failed latches do not comply with the associated
+								required conditions.
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Length" show-unit="false" system="SI and derived"
+								unit="m">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Length" show-unit="false" system="US"
+								unit="in">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.053">
+						<entry nameend="col5" namest="col2">
+							<paratext linkTargetID="SA.00021267.0004001.056">
+								For one latch type and one
+								<abb>ULD</abb>
+								position, any other combination of failed latches.
+							</paratext>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Length" show-unit="false" system="SI and derived"
+								unit="m">0</measure>
+						</entry>
+						<entry align="center" valign="middle">
+							<measure category="Length" show-unit="false" system="US"
+								unit="in">0</measure>
+						</entry>
+					</row>
+					<row linkTargetID="SA.00021267.0004001.059">
+						<entry nameend="col5" namest="col1" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.060">
+								For one
+								<abb>ULD</abb>
+								position, the failed latches are of different types.
+							</paratext>
+						</entry>
+						<entry nameend="col7" namest="col6" valign="middle">
+							<paratext linkTargetID="SA.00021267.0004001.061">
+								The affected
+								<abb>ULD</abb>
+								position must remain unoccupied.
+							</paratext>
+						</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</descbody>
+</description>

@@ -1,0 +1,43 @@
+<?php
+	/**
+	 * Fichier de configuration du module '<NOM_MODULE_MAJ>'
+	 */
+	
+	/** Chemin vers le module '<NOM_MODULE_MAJ>' */
+	define('_MODULE_<NOM_MODULE_MAJ>_',_DIR_MODULES_BASES_.'<NOM_MODULE_MIN>/');
+	/** URL vers le module '<NOM_MODULE_MAJ>' */
+	define('_URL_MODULE_<NOM_MODULE_MAJ>_',_URL_MODULES_BASES_.'<NOM_MODULE_MIN>/');
+	
+	/** Chemin vers les includes du module '<NOM_MODULE_MAJ>' */
+	define('_INCLUDES_<NOM_MODULE_MAJ>_',_MODULE_<NOM_MODULE_MAJ>_.'includes/');
+	/** URL vers les includes du module '<NOM_MODULE_MAJ>' */
+	define('_URL_INCLUDES_<NOM_MODULE_MAJ>_',_URL_MODULE_<NOM_MODULE_MAJ>_.'includes/');
+	
+	/** Le repertoire des images du module '<NOM_MODULE_MAJ>' */
+	define('_DIR_IMGS_<NOM_MODULE_MAJ>_', _DIR_IMGS_.'<NOM_MODULE_MIN>/');
+	/** l'URL des images du module '<NOM_MODULE_MAJ>' */
+	define('_URL_IMGS_<NOM_MODULE_MAJ>_', _URL_IMGS_.'<NOM_MODULE_MIN>/');
+	
+	/** Chemin vers les templates du module '<NOM_MODULE_MAJ>' */
+	define('_TEMPLATES_<NOM_MODULE_MAJ>_',_MODULE_<NOM_MODULE_MAJ>_.'templates/');
+	/** URL vers les templates du module '<NOM_MODULE_MAJ>' */
+	define('_URL_TEMPLATES_<NOM_MODULE_MAJ>_',_URL_MODULE_<NOM_MODULE_MAJ>_.'templates/');
+	
+	/** URL vers le JavaScript du module '<NOM_MODULE_MAJ>' */
+	define('_URL_JAVASCRIPT_<NOM_MODULE_MAJ>_', _URL_MODULE_<NOM_MODULE_MAJ>_.'javascript/');
+	
+	/************************/
+	/* Chargement de SMARTY */
+	/************************/
+	require_once _SMARTY_LOAD_;
+	
+
+	/*****************************************/
+	/* Chargement variables SMARTY du module */
+	/*****************************************/
+	$smarty->assign('URL_MODULE_<NOM_MODULE_MAJ>',_URL_MODULE_<NOM_MODULE_MAJ>_);
+	$smarty->assign('URL_IMGS_<NOM_MODULE_MAJ>',_URL_IMGS_<NOM_MODULE_MAJ>_);
+	$smarty->assign('URL_INCLUDES_<NOM_MODULE_MAJ>',_URL_INCLUDES_<NOM_MODULE_MAJ>_);
+	$smarty->assign('URL_TEMPLATES_<NOM_MODULE_MAJ>',_URL_TEMPLATES_<NOM_MODULE_MAJ>_);
+	$smarty->assign('URL_JAVASCRIPT_<NOM_MODULE_MAJ>',_URL_JAVASCRIPT_<NOM_MODULE_MAJ>_);
+?>

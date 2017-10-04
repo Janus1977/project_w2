@@ -1,0 +1,2714 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <title>Atlantis Ultima - Passage de niveau</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+    <link rel="stylesheet" type="text/css" href="../css/walkyrie/style.css" />
+    <link rel="stylesheet" href="http://www.atlantis-ultima.com/atlantis.css" type="text/css" media="screen" />
+
+
+
+    <script type="text/javascript">  
+        function verifForm(formu) {
+            reste_carac = document.formrecal.tot_carac.value;
+            reste_carac = parseInt(reste_carac);
+            reste_comp = document.formrecal.tot_comp.value;
+            reste_comp = parseInt(reste_comp);
+            if (reste_carac > 0 || reste_comp > 0) {
+                return confirm('Il reste des points ?');
+            }
+            else { 
+                return(true);
+            }
+        }
+        function update_qte_comp(id, id2, id3, val) {
+            plus_moins2 = parseInt(val);
+            quantite2 = document.formrecal[id].value;
+            reste2 = document.formrecal.tot_comp.value;
+            quantite2 = parseInt(quantite2) + parseInt(val);
+            comp_tot = document.formrecal[id3].value;
+            comp_tot_m1 = parseInt(comp_tot) - 1;
+            if (plus_moins2 > 0) {
+                cout = Math.floor(comp_tot/10);
+                cout++;
+                if (reste2 > 0 && reste2 >= cout && quantite2 <= 4) {
+                    reste2 -= cout;
+                    total_COMP =  parseInt(document.formrecal[id2].value) + quantite2;
+                    document.formrecal[id3].value = total_COMP;
+                    document.formrecal[id].value = quantite2;
+                    document.formrecal.tot_comp.value = reste2;
+                }
+            }
+            if (plus_moins2 < 0) {
+                cout = Math.floor(comp_tot_m1/10);
+                cout++;
+                if (reste2 >=0 && quantite2 >= 0) {
+                    reste2 = parseInt(reste2) + cout;
+                    total_COMP =  parseInt(document.formrecal[id2].value) + quantite2;
+                    document.formrecal[id3].value = total_COMP;
+                    document.formrecal[id].value = quantite2;
+                    document.formrecal.tot_comp.value = reste2;
+                }
+            }
+
+        }
+        function update_qte(id, id2, id3, val) {
+            plus_moins = parseInt(val);
+            quantite = document.formrecal[id].value;
+            reste = document.formrecal.tot_carac.value;
+            quantite = parseInt(quantite) + parseInt(val);
+            car_tot = document.formrecal[id3].value;
+            car_tot_m1 = parseInt(car_tot) - 1;
+            if (plus_moins > 0) {
+                cout = Math.floor(car_tot/10);
+                if (cout <= 0) { 
+                    cout++; 
+                }
+                if (reste > 0 && reste >= cout) {
+                    reste -= cout;
+                    total_CARAC =  parseInt(document.formrecal[id2].value) + quantite;
+                    document.formrecal[id3].value = total_CARAC;
+                    document.formrecal[id].value = quantite;
+                    document.formrecal.tot_carac.value = reste;
+                }
+            }
+            if (plus_moins < 0) {
+                cout = Math.floor(car_tot_m1/10);
+                if (cout <= 0) { 
+                    cout++; 
+                }
+                if (reste >= 0 && quantite >= 0) {
+                    reste = parseInt(reste) + cout;
+                    total_CARAC =  parseInt(document.formrecal[id2].value) + quantite;
+                    document.formrecal[id3].value = total_CARAC;
+                    document.formrecal[id].value = quantite;
+                    document.formrecal.tot_carac.value = reste;
+                }            
+           }
+        }
+        function calcul_PM() {
+            tot_VIT = parseInt(document.formrecal.VIT_tot.value);
+            tot_dcf = parseInt(document.formrecal.FOR_tot.value) + parseInt(document.formrecal.CON_tot.value) + parseInt(document.formrecal.DEX_tot.value);
+            var B_ptm = Math.floor(tot_dcf/3);
+            var VIT_15 = parseInt(tot_VIT*2);
+            var ESQ = Math.floor((tot_VIT-5)/2);
+            if (ESQ < 1) { 
+                ESQ = 1; 
+            }
+            var PtM = VIT_15 + B_ptm;
+            document.formrecal.PM.value = PtM;
+            document.formrecal.ESQ.value = ESQ;
+        }
+                    function calcul_MANA() {
+                tot_INT = parseInt(document.formrecal.INT_tot.value);
+                var Ma = Math.floor((tot_INT+7)/2);
+                var b_ma = parseInt(document.formrecal.Mana_pts.value);
+                document.formrecal.MANA.value = Ma + b_ma;
+            }
+                function calcul_PV() {
+            CON = parseInt(document.formrecal.CON_tot.value);
+            var b_pv = parseInt(document.formrecal.pv_pts.value);
+            var PtV = parseInt(CON * 3) + parseInt(document.formrecal.FOR_tot.value);
+            document.formrecal.PV.value = PtV + b_pv;
+        }
+        function calcul_ENC() {
+            CON = parseInt(document.formrecal.CON_tot.value);
+            var en = Math.floor(CON/2) + parseInt(document.formrecal.FOR_tot.value);
+            document.formrecal.ENC.value = en;
+        }
+        function calcul_arm() {
+            CON = parseInt(document.formrecal.CON_tot.value);
+            ar1 = CON-12;
+            ar = Math.floor(ar1/5);
+            document.formrecal.armure.value = ar;
+        }
+        function calcul_VI() {
+            PER = parseInt(document.formrecal.PER_tot.value);
+            vi = 1 + Math.floor(PER/3);
+            if (vi < 1) { 
+                vi = 1; 
+            }
+            document.formrecal.vision.value = vi;
+        }
+        function calcul_de() {
+            FOR = parseInt(document.formrecal.FOR_tot.value);
+            FOR_m10 = FOR - 12;
+            NIV = parseInt(document.formrecal.deg_pts.value);
+            deg = Math.floor(FOR_m10/4) + NIV;
+            document.formrecal.DEG.value = deg;
+        }
+    </script>
+
+</head>
+<body bgcolor="#000000" text="#ffffff" onload="javascript:calcul_PM();javascript:calcul_MANA();javascript:calcul_PV();javascript:calcul_VI();javascript:calcul_ENC();javascript:calcul_arm();javascript:calcul_de();">
+<!--
+<table width="816" border="0" cellspacing="0" cellpadding="0" summary="">
+  <tr> 
+    <td><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="816" height="76">
+        <param name="movie" value="http://www.atlantis-ultima.com/IMAGES/design/">
+        <param name="quality" value="high">
+        <embed src="http://www.atlantis-ultima.com/IMAGES/design/" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="816" height="76"></embed> 
+      </object></td>
+  </tr>
+</table>
+-->
+<!--
+<table width="816" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="625" height="55"><img src="http://www.atlantis-ultima.com/IMAGES/design/menu1_1_bis.gif" width="625" height="55"></td>
+          <td background="http://www.atlantis-ultima.com/IMAGES/design/menu1_3.gif">&nbsp;</td>
+          <td width="96"><img src="http://www.atlantis-ultima.com/IMAGES/design/menu1_2_bis.gif" width="96" height="55"></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="14" background="http://www.atlantis-ultima.com/IMAGES/design/menu1_9.gif">&nbsp;</td>
+          <td class="texte"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td width="5"></td><td valign="top">
+          -->
+<div class="box-containeur-size">
+    <div class="box_space"></div>
+
+<h1>Atlantis Ultima</h1>
+    <div class="box1_top"><div><div>&nbsp;</div></div></div>
+		<div class="box-containeur-title">
+							<table summary="">
+					<tr>
+												<td valign="top">
+						<h2>PASSAGE AU NIVEAU <? echo $niv_sup; ?> !<span>&nbsp;</span></h2>
+						</td>
+					</tr>
+				</table>
+				
+				
+			          	<div class="fiche-menu">
+		</div>
+	</div>	
+	<div class="box1_content">				
+
+<div class="box_space"></div>
+
+    	<div class="box1_top"><div><div>&nbsp;</div></div></div>
+        <div class="box1_content">
+            <div class="box2_top"><div><div>&nbsp;</div></div></div>
+                <div class="box2_content">
+
+          
+    
+<!--<span class="texte">-->
+    <font color="#FFCC00" size="3">
+    <b>PASSAGE AU NIVEAU 38 !</b></font><br/>
+<table border="0" cellspacing="0" cellpadding="2" summary="">
+    <form method="post" action="passage_niv.php" name="formrecal" onsubmit="return verifForm(this.form)">
+        <input type="hidden" name="etape" value="2" />
+        <input type="hidden" name="Mana_pts" value="8" />
+        <input type="hidden" name="pv_pts" value="11" />
+        <input type="hidden" name="deg_pts" value="0" />
+        
+                <input type="hidden" name="aug_2" value="comp"/>
+    <tr>
+        <td colspan="2" class="texte">
+            <img src="http://www.atlantis-ultima.com/IMAGES/puce.gif"  alt="" />
+            <font color="#6699FF"><b>Caractéristiques</b></font> : 
+            (<b><a href="#" onclick="window.open('http://www.atlantis-ultima.com/popup.php?page=caracteristiques','modeavenir','toolbar=0, location=0, directories=0, status=0, scrollbars=1, resizable=1, copyhistory=0, menuBar=0, width=850, height=600');return(false)">
+                <font color="#FFCC00">?</font>
+                </a>
+            </b>)
+            <br/>
+            <font color="#FF9900"><i>
+                <b>Vous pouvez garder des points pour votre prochain niveau.</b><br/>
+                Les points se dépensent comme ceci :<br/>
+                Caractéristique &lt;= à 20 : 1 pt = 1 pt de carac<br/>
+                Caractéristique &gt; à 20 et &lt;= à 30 : 2 pts = 1 pt de carac<br/>
+                Caractéristique &gt; à 30 et &lt;= à 40 : 3 pts = 1 pt de carac .etc...<br/>
+            </i></font>
+            <br/>
+            <b><font color="#FF0000">Il vous reste 
+            <input name="tot_carac" type="text" size="3" value="2" readonly="readonly" />
+            point(s) à dépenser.
+            </font></b><br/>
+        </td>
+    </tr>
+    <tr> 
+        <td colspan="2" class="texte">
+            <table border="0" cellspacing="0" cellpadding="3" summary="">
+            <tr> 
+                <td class="texte">
+                    <b>VIT</b>ESSE : 
+                </td>
+                <td class="texte" align="center">
+                    <b>12</b>
+                    <input type="hidden" value="12" name="VIT_base" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte('VIT','VIT_base','VIT_tot',1);javascript:calcul_PM();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="VIT" size="2" value="0" readonly="readonly" />
+                    <br/>
+                    <a href="javascript:update_qte('VIT','VIT_base','VIT_tot',-1);javascript:calcul_PM();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0"  alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="VIT_tot" size="2" value="12" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center">
+                    &nbsp;
+                </td>
+                <td class="texte" align="right">
+                    PM :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="PM" size="2" value="0" readonly="readonly" />
+                </td>
+                <td class="texte" align="right">
+                    Enc :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="ENC" size="2" value="0" readonly="readonly" />
+                </td>
+            </tr>
+            <tr> 
+                <td class="texte">
+                    <b>FOR</b>CE : 
+                </td>
+                <td class="texte" align="center">
+                    <b>27</b>
+                    <input type="hidden" value="27" name="FOR_base" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center">
+                    <a href="javascript:update_qte('FOR','FOR_base','FOR_tot',1);javascript:calcul_PM();javascript:calcul_PV();javascript:calcul_ENC();javascript:calcul_de();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="FOR" size="2" value="0" readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte('FOR','FOR_base','FOR_tot',-1);javascript:calcul_PM();javascript:calcul_PV();javascript:calcul_ENC();javascript:calcul_de();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0"  alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="FOR_tot" size="2" value="27" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center" width="10">
+                    &nbsp;
+                </td>
+                <td class="texte" align="right">
+                    PV :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="PV" size="2" value="0" eadonly="readonly"/>
+                                    </td>
+                <td class="texte" align="right">
+                    Armure :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="armure" size="2" value="0" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr> 
+                <td class="texte">
+                    <b>CON</b>STITUTION : 
+                </td>
+                <td class="texte" align="center">
+                    <b>22</b>
+                    <input type="hidden" value="22" name="CON_base"/>
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center">
+                    <a href="javascript:update_qte('CON','CON_base','CON_tot',1);javascript:calcul_PM();javascript:calcul_PV();javascript:calcul_arm();javascript:calcul_ENC();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="CON" size="2" value="0" readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte('CON','CON_base','CON_tot',-1);javascript:calcul_PM();javascript:calcul_PV();javascript:calcul_arm();javascript:calcul_ENC();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0"  alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="CON_tot" size="2" value="22" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center" width="10">
+                    &nbsp;
+                </td>
+                <td class="texte" align="right">
+                    Vision :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="vision" size="2" value="0" readonly="readonly" />
+                </td>
+                <td class="texte" align="right">
+                    Mana :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="MANA" size="2" value="0" readonly="readonly" />
+                </td>
+            </tr>
+            <tr> 
+                <td class="texte">
+                    <b>DEX</b>TERITE : 
+                </td>
+                <td class="texte" align="center">
+                    <b>19</b>
+                    <input type="hidden" value="19" name="DEX_base">
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center">
+                    <a href="javascript:update_qte('DEX','DEX_base','DEX_tot',1);javascript:calcul_PM();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="DEX" size="2" value="0" readonly="readonly" />
+                    <br/>
+                    <a href="javascript:update_qte('DEX','DEX_base','DEX_tot',-1);javascript:calcul_PM();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0"  alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="DEX_tot" size="2" value="19" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center" width="10">
+                    &nbsp;
+                </td>
+                <td class="texte" align="right">
+                    DEG :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="DEG" size="2" value="0" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center">
+                    ESQ :
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="ESQ" size="2" value="0" readonly="readonly"/>
+                    %
+                </td>
+            </tr>
+            <tr> 
+                <td class="texte">
+                    <b>PER</b>CEPTION : 
+                </td>
+                <td class="texte" align="center">
+                    <b>18</b>
+                    <input type="hidden" value="18" name="PER_base"/>
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center">
+                    <a href="javascript:update_qte('PER','PER_base','PER_tot',1);javascript:calcul_VI();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="PER" size="2" value="0" readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte('PER','PER_base','PER_tot',-1);javascript:calcul_VI();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0"  alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="PER_tot" size="2" value="18" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center">
+                    &nbsp;
+                </td>
+                <td class="texte" align="center" colspan="4">
+                    Accès aux sorts de niv 7                </td>
+            </tr>
+            <tr> 
+                <td class="texte">
+                    <b>VOL</b>ONTE : 
+                </td>
+                <td class="texte" align="center">
+                    <b>16</b>
+                    <input type="hidden" value="16" name="VOL_base"/>
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center">
+                    <a href="javascript:update_qte('VOL','VOL_base','VOL_tot',1);javascript:calcul_MANA();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="VOL" size="2" value="0" readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte('VOL','VOL_base','VOL_tot',-1);javascript:calcul_MANA();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0"  alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="VOL_tot" size="2" value="16" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="texte">
+                    <b>INT</b>ELLIGENCE : 
+                </td>
+                <td class="texte" align="center">
+                    <b>25</b>
+                    <input type="hidden" value="25" name="INT_base"/>
+                </td>
+                <td class="texte" align="center">+</td>
+                <td class="texte" align="center">
+                    <a href="javascript:update_qte('INT','INT_base','INT_tot',1);javascript:calcul_MANA();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="INT" size="2" value="0" readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte('INT','INT_base','INT_tot',-1);javascript:calcul_MANA();">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="INT_tot" size="2" value="25" readonly="readonly"/>
+                </td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+                <td class="texte" align="center">&nbsp;</td>
+            </tr>
+        </table>
+        </td>
+    </tr>
+    <tr> 
+        <font color="#FF9900"><i>
+            Vous ne pouvez ajouter plus d'un +4 à la fois dans une compétence !<br/>
+            <td colspan="2" class="texte">
+                <img src="http://www.atlantis-ultima.com/IMAGES/puce.gif"  alt="" />
+                <font color="#6699FF">
+                    <b>Compétences</b>
+                </font> : (<b><a href="#" onclick="window.open('http://www.atlantis-ultima.com/popup.php?page=competences','atlantis','toolbar=0, location=0, directories=0, status=0, scrollbars=1, resizable=1, copyhistory=0, menuBar=0, width=850, height=600');return(false)">
+                <font color="#FFCC00">?</font></a></b>)<br/>
+                <b>Vous pouvez garder des points pour votre prochain niveau.</b><br/>
+                Les points se dépensent comme ceci :<br/>
+                Compétence <= à 10 : 1 pt = 1 pt de comp<br/>
+                Compétence > à 10 et <= à 20 : 2 pts = 1 pt de comp<br/>
+                Compétence > à 20 et <= à 30 : 3 pts = 1 pt de comp .etc...
+        </i></font>
+                <br/>
+                <br/>
+                <b><font color="#FF0000">Il vous reste 
+                <input name="tot_comp" type="text" size="3" value="4" readonly="readonly"/>
+                point(s) à dépenser.</font></b>
+                <br/>
+                <br/>
+            </td>
+    </tr>
+    <tr>
+        <td class="texte" valign="top">
+            <table border="0" cellspacing="0" cellpadding="2" summary="">
+                <tr>
+                    <td class="texte" valign="top">
+                        <font color="#CCCCCC">
+                            <b>Générales</b>
+                        </font>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="1" summary="">
+                        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n1" value="Apaisement"/>Apaisement :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b1" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p1','b1','t1',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p1" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p1','b1','t1',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t1" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n2" value="Artisanat"/>Artisanat :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b2" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p2','b2','t2',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p2" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p2','b2','t2',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t2" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n3" value="Blocage"/>Blocage :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b3" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p3','b3','t3',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p3" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p3','b3','t3',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t3" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n4" value="Camouflage"/>Camouflage :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b4" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p4','b4','t4',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p4" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p4','b4','t4',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t4" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n5" value="Commandement"/><font color=#37BEFF>Commandement</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b5" size="2" value="10" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p5','b5','t5',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p5" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p5','b5','t5',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t5" size="2" value="10" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n6" value="Courage"/>Courage :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b6" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p6','b6','t6',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p6" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p6','b6','t6',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t6" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n7" value="Divination"/>Divination :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b7" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p7','b7','t7',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p7" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p7','b7','t7',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t7" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n8" value="Déguisement"/><font color=#37BEFF>Déguisement</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b8" size="2" value="1" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p8','b8','t8',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p8" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p8','b8','t8',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t8" size="2" value="1" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n9" value="Enseignement"/><font color=#37BEFF>Enseignement</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b9" size="2" value="15" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p9','b9','t9',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p9" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p9','b9','t9',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t9" size="2" value="15" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n10" value="Espionnage"/>Espionnage :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b10" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p10','b10','t10',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p10" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p10','b10','t10',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t10" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n11" value="Intimidation"/><font color=#37BEFF>Intimidation</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b11" size="2" value="10" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p11','b11','t11',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p11" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p11','b11','t11',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t11" size="2" value="10" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n12" value="Marchandage"/>Marchandage :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b12" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p12','b12','t12',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p12" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p12','b12','t12',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t12" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n13" value="Observation"/>Observation :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b13" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p13','b13','t13',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p13" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p13','b13','t13',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t13" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n14" value="Passage en force"/>Passage en force :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b14" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p14','b14','t14',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p14" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p14','b14','t14',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t14" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n15" value="Pickpocket"/>Pickpocket :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b15" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p15','b15','t15',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p15" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p15','b15','t15',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t15" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n16" value="Pièges"/>Pièges :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b16" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p16','b16','t16',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p16" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p16','b16','t16',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t16" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n17" value="Provocation"/>Provocation :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b17" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p17','b17','t17',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p17" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p17','b17','t17',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t17" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n18" value="Renseignement"/>Renseignement :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b18" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p18','b18','t18',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p18" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p18','b18','t18',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t18" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n19" value="Représentation"/>Représentation :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b19" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p19','b19','t19',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p19" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p19','b19','t19',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t19" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n20" value="Régénération"/>Régénération :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b20" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p20','b20','t20',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p20" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p20','b20','t20',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t20" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n21" value="Réparation"/>Réparation :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b21" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p21','b21','t21',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p21" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p21','b21','t21',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t21" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n22" value="Scrutation"/>Scrutation :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b22" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p22','b22','t22',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p22" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p22','b22','t22',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t22" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n23" value="Soins"/><font color=#37BEFF>Soins</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b23" size="2" value="15" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p23','b23','t23',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p23" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p23','b23','t23',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t23" size="2" value="15" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n24" value="Vigilance"/>Vigilance :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b24" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p24','b24','t24',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p24" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p24','b24','t24',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t24" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n25" value="Voyage"/><font color=#37BEFF>Voyage</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b25" size="2" value="10" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p25','b25','t25',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p25" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p25','b25','t25',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t25" size="2" value="10" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+                        </table>
+                        <br/>
+                        <font color="#CCCCCC">
+                            <b>Divines</b>
+                        </font>
+                        <br/>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="1" summary="">
+                        
+
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n26" value="Prière (Bulwyr)"/><font color=#37BEFF>Prière (Bulwyr)</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b26" size="2" value="1" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p26','b26','t26',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p26" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p26','b26','t26',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t26" size="2" value="1" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n27" value="Prière (Bérénice)"/>Prière (Bérénice) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b27" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p27','b27','t27',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p27" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p27','b27','t27',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t27" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n28" value="Prière (Cadmaelle)"/>Prière (Cadmaelle) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b28" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p28','b28','t28',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p28" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p28','b28','t28',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t28" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n29" value="Prière (Galladur)"/>Prière (Galladur) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b29" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p29','b29','t29',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p29" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p29','b29','t29',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t29" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n30" value="Prière (HunHau)"/>Prière (HunHau) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b30" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p30','b30','t30',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p30" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p30','b30','t30',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t30" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n31" value="Prière (Héléna)"/>Prière (Héléna) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b31" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p31','b31','t31',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p31" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p31','b31','t31',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t31" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n32" value="Prière (Iléon)"/>Prière (Iléon) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b32" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p32','b32','t32',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p32" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p32','b32','t32',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t32" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n33" value="Prière (Lina)"/>Prière (Lina) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b33" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p33','b33','t33',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p33" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p33','b33','t33',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t33" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n34" value="Prière (Lucco)"/>Prière (Lucco) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b34" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p34','b34','t34',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p34" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p34','b34','t34',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t34" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n35" value="Prière (Lyrielle)"/>Prière (Lyrielle) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b35" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p35','b35','t35',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p35" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p35','b35','t35',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t35" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n36" value="Prière (Maclord)"/>Prière (Maclord) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b36" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p36','b36','t36',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p36" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p36','b36','t36',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t36" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n37" value="Prière (Mohja)"/>Prière (Mohja) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b37" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p37','b37','t37',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p37" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p37','b37','t37',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t37" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n38" value="Prière (Morgor)"/>Prière (Morgor) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b38" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p38','b38','t38',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p38" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p38','b38','t38',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t38" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n39" value="Prière (Roidoc)"/>Prière (Roidoc) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b39" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p39','b39','t39',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p39" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p39','b39','t39',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t39" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n40" value="Prière (Thaors)"/>Prière (Thaors) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b40" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p40','b40','t40',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p40" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p40','b40','t40',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t40" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n41" value="Prière (Vaalaos)"/>Prière (Vaalaos) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b41" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p41','b41','t41',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p41" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p41','b41','t41',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t41" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n42" value="Prière (Zorg le Basilic)"/>Prière (Zorg le Basilic) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b42" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p42','b42','t42',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p42" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p42','b42','t42',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t42" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n43" value="Prêche"/>Prêche :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b43" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p43','b43','t43',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p43" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p43','b43','t43',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t43" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+                        </table>
+                    </td>
+                    <td width=30>
+                        &nbsp;
+                    </td>
+                    <td class="texte" valign="top">
+                        <font color="#CCCCCC">
+                            <b>Combat</b>
+                        </font>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="1" summary="">
+
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n44" value="Armes articulées"/>Armes articulées :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b44" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p44','b44','t44',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p44" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p44','b44','t44',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t44" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n45" value="Armes contondantes"/><font color=#37BEFF>Armes contondantes</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b45" size="2" value="2" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p45','b45','t45',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p45" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p45','b45','t45',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t45" size="2" value="2" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n46" value="Armes de jet"/>Armes de jet :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b46" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p46','b46','t46',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p46" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p46','b46','t46',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t46" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n47" value="Berserk"/>Berserk :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b47" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p47','b47','t47',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p47" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p47','b47','t47',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t47" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n48" value="Bâtons et piques"/><font color=#37BEFF>Bâtons et piques</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b48" size="2" value="2" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p48','b48','t48',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p48" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p48','b48','t48',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t48" size="2" value="2" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n49" value="Combat à mains nues"/><font color=#37BEFF>Combat à mains nues</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b49" size="2" value="4" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p49','b49','t49',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p49" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p49','b49','t49',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t49" size="2" value="4" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n50" value="Coups puissants"/>Coups puissants :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b50" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p50','b50','t50',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p50" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p50','b50','t50',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t50" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n51" value="Escrime"/>Escrime :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b51" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p51','b51','t51',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p51" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p51','b51','t51',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t51" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n52" value="Esquive"/><font color=#37BEFF>Esquive</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b52" size="2" value="11" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p52','b52','t52',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p52" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p52','b52','t52',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t52" size="2" value="11" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n53" value="Lames courtes"/>Lames courtes :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b53" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p53','b53','t53',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p53" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p53','b53','t53',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t53" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n54" value="Maîtrise des haches"/>Maîtrise des haches :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b54" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p54','b54','t54',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p54" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p54','b54','t54',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t54" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n55" value="Parade"/><font color=#37BEFF>Parade</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b55" size="2" value="11" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p55','b55','t55',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p55" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p55','b55','t55',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t55" size="2" value="11" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n56" value="Résistance"/><font color=#37BEFF>Résistance</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b56" size="2" value="7" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p56','b56','t56',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p56" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p56','b56','t56',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t56" size="2" value="7" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n57" value="Science du combat"/>Science du combat :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b57" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p57','b57','t57',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p57" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p57','b57','t57',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t57" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n58" value="Tir (Arbalète)"/>Tir (Arbalète) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b58" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p58','b58','t58',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p58" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p58','b58','t58',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t58" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n59" value="Tir (Arc)"/>Tir (Arc) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b59" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p59','b59','t59',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p59" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p59','b59','t59',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t59" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n60" value="Tir (Armes lourdes)"/>Tir (Armes lourdes) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b60" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p60','b60','t60',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p60" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p60','b60','t60',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t60" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n61" value="Tir (Armes légères)"/>Tir (Armes légères) :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b61" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p61','b61','t61',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p61" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p61','b61','t61',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t61" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n62" value="Tir précis"/>Tir précis :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b62" size="2" value="0" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p62','b62','t62',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p62" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p62','b62','t62',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t62" size="2" value="0" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+                        </table>
+                        <br/>
+                        <font color="#CCCCCC">
+                            <b>Magiques</b>
+                        </font>
+                        <br/>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="1" summary="">
+                        
+
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n63" value="Arcanes (Bataille)"/><font color=#37BEFF>Arcanes (Bataille)</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b63" size="2" value="40" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p63','b63','t63',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p63" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p63','b63','t63',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t63" size="2" value="40" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n64" value="Arcanes (Contrôle)"/><font color=#37BEFF>Arcanes (Contrôle)</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b64" size="2" value="25" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p64','b64','t64',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p64" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p64','b64','t64',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t64" size="2" value="25" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n65" value="Arcanes (Lumière)"/><font color=#37BEFF>Arcanes (Lumière)</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b65" size="2" value="30" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p65','b65','t65',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p65" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p65','b65','t65',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t65" size="2" value="30" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n66" value="Arcanes (Protection)"/><font color=#37BEFF>Arcanes (Protection)</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b66" size="2" value="24" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p66','b66','t66',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p66" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p66','b66','t66',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t66" size="2" value="24" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n67" value="Arcanes (Ténèbres)"/><font color=#37BEFF>Arcanes (Ténèbres)</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b67" size="2" value="20" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p67','b67','t67',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p67" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p67','b67','t67',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t67" size="2" value="20" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n68" value="Alchimie"/><font color=#37BEFF>Alchimie</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b68" size="2" value="14" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p68','b68','t68',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p68" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p68','b68','t68',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t68" size="2" value="14" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n69" value="Enchantement"/><font color=#37BEFF>Enchantement</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b69" size="2" value="14" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p69','b69','t69',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p69" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p69','b69','t69',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t69" size="2" value="14" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n70" value="Méditation"/><font color=#37BEFF>Méditation</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b70" size="2" value="14" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p70','b70','t70',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p70" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p70','b70','t70',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t70" size="2" value="14" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n71" value="Runes"/><font color=#37BEFF>Runes</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b71" size="2" value="18" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p71','b71','t71',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p71" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p71','b71','t71',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t71" size="2" value="18" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="texte">
+                    <input type=hidden name="n72" value="Résistance magique"/><font color=#37BEFF>Résistance magique</font> :
+                </td>
+                <td class="texte">
+                    <input type="text" name="b72" size="2" value="11" 	 readonly="readonly" />
+                </td>
+                <td class="texte" align="center">
+                    +
+                </td>
+                <td class="texte" align="center" width="50">
+                    <a href="javascript:update_qte_comp('p72','b72','t72',1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/plus.gif" border="0"  alt="" />
+                    </a>
+                    <br/>
+                    <input type="text" name="p72" size="2" value="0" 	 readonly="readonly"/>
+                    <br/>
+                    <a href="javascript:update_qte_comp('p72','b72','t72',-1);">
+                        <img src="http://www.atlantis-ultima.com/IMAGES/moins.gif" border="0" alt="" />
+                    </a>
+                </td>
+                <td class="texte" align="center">
+                    =
+                </td>
+                <td class="texte" align="center">
+                    <input type="text" name="t72" size="2" value="11" 	 readonly="readonly"/>
+                </td>
+            </tr>
+        
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>  
+    <tr>
+        <td class="texte">&nbsp;</td>
+        <td class="texte">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="texte" colspan="2">
+            <input type="submit" value="-= PASSER AU NIVEAU 38 =-" />
+        </td>
+    </tr>
+  </form>
+</table>
+
+
+                </div>
+            <div class="box2_bottom"><div><div>&nbsp;</div></div></div>
+        </div>
+    <div class="box1_bottom"><div><div>&nbsp;</div></div></div>
+	<div class="box_space"></div>
+
+	        </div>
+    <div class="box1_bottom"><div><div>&nbsp;</div></div></div>
+	<div class="box_space"></div>
+
+</div>
+<!--
+</td></tr></table>
+                    </td>
+          <td width="14" background="http://www.atlantis-ultima.com/IMAGES/design/menu1_9inv.gif"></td>
+        </tr>
+        <tr> 
+          <td><img src="http://www.atlantis-ultima.com/IMAGES/design/droite_bas.gif" width="14" height="16"></td>
+          <td height="16" background="http://www.atlantis-ultima.com/IMAGES/design/bas.gif"></td>
+          <td><img src="http://www.atlantis-ultima.com/IMAGES/design/gauche_bas.gif" width="14" height="16"></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</table>
+-->
+</body>
+</html>

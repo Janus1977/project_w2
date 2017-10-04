@@ -1,0 +1,5 @@
+cheminVersPlateauCarte = G:/private/DEVELOPPEMENT/UWamp/www/project_w2/images/cartes/chris.jpg
+largeur = 400
+hauteur = 400
+plateauxCarte = Objet Carteplateaux:<br/>Le champ id vaut 46<br/>Le champ carte vaut 35<br/>Le champ plateau vaut 4<br/>Le champ x vaut 1<br/>Le champ y vaut 1<br/>
+imagePlateau = G:/private/DEVELOPPEMENT/UWamp/www/project_w2/images/plateaux/croisement_passerelle_10x10.jpg

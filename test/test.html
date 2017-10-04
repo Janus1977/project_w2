@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head>
+<title>Jquery Goes to Dom-Ville</title>
+
+<style>
+	#change_me {
+	position : absolute;
+	top:100px;
+	left:400px;
+	font:24px arial;}
+	
+	#move_up #move_down #color #disappear{
+	padding:5px;}
+</style>
+
+<script src="Scripts/jquery-1.8.2.min.js"></script>
+<script>
+		$(document).ready(function() {
+			$("#move_up").click(function(){
+					$("#change_me").animate(
+							{'top':'+=30'},
+							2000,
+							function() {
+								alert("fin deplacement vers le haut");
+							});
+			});//end move_up
+			$("#move_down").click(function(){
+					$("#change_me").animate(
+							{top:'-=30'},
+							2000);
+			});//end move_down
+			$("#color").click(function(){
+					$("#change_me").css("color","purple");
+			});//end color
+			$("#disappear").click(function(){
+					$("#change_me").toggle("slow");
+			});//end disappear
+			
+			$('#test').click(function() {
+				  $('#change_me').animate({
+				    opacity: 0.25,
+				    left: '+=50',
+				    height: 'toggle'
+				  }, 5000, function() {
+				    // Animation complete.
+				  });
+				});
+		});// en doc ready
+	</script>
+</head>
+<body>
+	<button id="move_up">Move up </button>
+	<button id="move_down">Move down </button>
+	<button id="color">Change Color </button>
+	<button id="disappear">Disappear/Re-appear</button>
+	<button id="test">test</button>
+	
+	<div id="change_me" name="change_me">Make me do Stuff !!!</div>
+	
+	
+	
+</body>
+</html>

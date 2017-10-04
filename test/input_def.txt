@@ -1,0 +1,47 @@
+6 :
+ 
+Aggresseur R3ptile ([1:2:4])
+Armes 410% - Bouclier 410% - Coque 410%
+Type Rip
+Nombre 290,585,476
+Armes 305,289,101,085,600
+Bouclier 88,628,570,180,000
+Coque 1,333,787,334,840,000
+ 
+ 
+Défenseur Tiso ([1:257:6])
+Armes 410% - Bouclier 420% - Coque 410%
+Type Missile L.léger. L.lourd Can.Gauss Art.ions Lanc.plasma P.bouclier G.bouclier Protec.P AG3
+Nombre 471,739,181,228 5,903,460,655 11,580,267,603 4,132,461,290 1,784,845,493 2,588,755,671 1 1 132,655,026 3,072,021
+Armes 196,318,977,659,845 2,769,903,739,326 17,127,215,784,837 22,487,614,601,793 1,488,293,414,338 43,568,757,942,930 0 0 32,135,680,048,500 169,206,916,680
+Bouclier 96,234,792,970,512 1,505,382,467,025 11,811,872,955,060 8,430,221,031,600 9,102,712,014,300 7,921,592,353,260 2,040,000,000 8,160,000,000 20,296,218,978,000 78,336,535,500
+Coque 481,173,964,852,560 6,021,529,868,100 47,247,491,820,240 73,764,434,026,500 7,282,169,611,440 132,026,539,221,000 10,200 51,000 101,481,094,890,000 548,355,748,500
+ 
+ 
+La flotte attaquante tire avec une puissance de 305.289.101.085.600 sur le défenseur. Les boucliers du défenseur absorbent 110 140 278 615 225 points de dégats.
+La flotte défensive tire avec une puissance de 316.065.650.108.248 sur l'attaquant. Les boucliers de l'attaquant absorbent 88 628 570 180 000 points de dégats.
+ 
+ 
+ 
+Le défenseur a gagné la bataille.
+ 
+L'attaquant a perdu un total de 8.856.174.824.000.000 unitées
+Le défenseur a perdu un total de 1.902.275.744.448.000 unitées
+Un champs de débris 2.747.109.299.739.200 Metal et 1.962.405.192.308.000 Cristal flottant dans l'orbite de la planète.
+Nombre de recycleurs nécessaire à la collecte : 9419028985
+ 
+La probabilité de la création d'une lune est de : 20 %
+ 
+ 
+Script (mission) éxécutée en 0.001071 secondes.
+
+
+
+
+-
+Edité par cyril-3-4 il y a environ 12 heures
+
+    Partager sur Facebook
+    Partager sur Twitter
+    Partager via Google +1
+

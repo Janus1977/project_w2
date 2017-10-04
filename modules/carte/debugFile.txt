@@ -1,0 +1,4 @@
+cheminVersPlateauCarte = F:/private/DEVELOPPEMENT/environement_dev/dev_web/UwAmp/www/project_w2/images/cartes/chris.jpg
+largeur = 400
+hauteur = 400
+plateauxCarte = Objet Carteplateaux:<br/>Le champ id vaut 46<br/>Pas de Carte associ&eacute;<br/>Pas de Plateau associ&eacute;<br/>Le champ x vaut 1<br/>Le champ y vaut 1<br/>
